@@ -16,7 +16,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        {/* {children} */}
+        <Outlet context={{txt: 'dummy'}} />
         <ScrollRestoration />
         <Scripts />
       </body>

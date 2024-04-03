@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { SampleText } from "../components/SampleText"
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,20 +15,10 @@ export default function Index() {
       <ul>
         <li>
           <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
+            href="/login"
             rel="noreferrer"
           >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
+            ログインページ
           </a>
         </li>
         <li>
@@ -36,6 +27,8 @@ export default function Index() {
           </a>
         </li>
       </ul>
+        これ
+        <SampleText />
     </div>
   );
 }
