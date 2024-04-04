@@ -12,26 +12,14 @@ export const loader = ({request}: LoaderFunctionArgs) => {
     ]);
 }
 
-
-export async function action({
-        request,
-    }: ActionFunctionArgs) {
-    const body = await request.formData();
-    console.log(body)
-    console.log(body.get('email'))
-
-    return redirect(`/login/`);
-}
-
 export default function Index(){
     const navigate = useNavigate();
     const apiData = useLoaderData<typeof loader>();
-
     console.log(apiData)
 
     return(
         <div>
-            <Form method="post">
+            <Form method="post" action="/api">
                 <input type="e-mail" name="email"/>
                 <button type="submit">送信</button>
             </Form>
