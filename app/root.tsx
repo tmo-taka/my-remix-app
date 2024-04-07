@@ -5,6 +5,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import 'bulma/css/bulma.min.css'
+import './assets/mixin.css'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

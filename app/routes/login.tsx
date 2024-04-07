@@ -19,9 +19,14 @@ export default function Index(){
 
     return(
         <div>
-            <Form method="post" action="/api">
-                <input type="e-mail" name="email"/>
-                <button type="submit">送信</button>
+            <Form method="post" action="/api" className="box">
+                <div className="field">
+                    <input type="e-mail" name="email" className="input" />
+                </div>
+                <div className="field">
+                    <input type="password" name="password" className="input" />
+                </div>
+                <button type="submit" className="button bulma-control-mixin">送信</button>
             </Form>
             <a onClick={() => navigate(-1)}>前へ戻る</a>
         </div>

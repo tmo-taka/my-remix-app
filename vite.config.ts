@@ -7,4 +7,14 @@ installGlobals();
 
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
+  // remixは全てサーバー側なのでproxyがいらない
+  // server: {
+  //   proxy: {
+  //     '/json-dummy': {
+  //       target: 'https://jsonplaceholder.typicode.com',
+  //       // changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/json-dummy/, ''),
+  //     },
+  //   }
+  // }
 });
