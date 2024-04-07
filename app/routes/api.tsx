@@ -9,9 +9,10 @@ export async function action({
     const session = await getSession(
         request.headers.get('Cookie')
     )
-    console.log(session)
+    console.log(session.hasAll())
     const body = await request.formData();
     console.log(body.get('email'))
+    console.log(body.get('passsword'))
 
     return redirect(`/login/`,{
         headers: {
