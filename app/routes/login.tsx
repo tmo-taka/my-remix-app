@@ -5,7 +5,6 @@ import { Form, useNavigate } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 
 export const loader = ({request}: LoaderFunctionArgs) => {
-    console.log(request);
     return json([
         { id: "1", name: "Pants" },
         { id: "2", name: "Jacket" },
@@ -15,7 +14,6 @@ export const loader = ({request}: LoaderFunctionArgs) => {
 export default function Index(){
     const navigate = useNavigate();
     const apiData = useLoaderData<typeof loader>();
-    console.log(apiData)
 
     return(
         <div>
