@@ -12,18 +12,29 @@ export async function action({
     const session = await getSession(
         request.headers.get('Cookie')
     )
-    try {
-        const data = await loadQuery<SanityDocument>(AUTH_QUERY);
-        console.log('kore',data);
-        const body = await request.formData();
-        console.log(body.get('email'))
-        console.log(body.get('passsword'))
 
-        return redirect(`/login/`,{
-            headers: {
-                "Set-Cookie": await commitSession(session),
-            },
-        });
+    try {
+        const body = await request.formData();
+        const user:FormDataEntryValue | null = body.get('email');
+        const password:FormDataEntryValue | null = body.get('password');
+        // どちらも入力されていない場合はリダイレクトのみ
+        if(!(user && password)) {return (redirect('/login/'))}
+        const {data} = await loadQuery<SanityDocument>(AUTH_QUERY({
+            user,
+            password
+        }));
+
+        if(data.length){
+            // ID,PASSWORDがあっている場合
+            return redirect(`/login/`,{
+                headers: {
+                    "Set-Cookie": await commitSession(session),
+                },
+            });
+        } else {
+            // ID,PASSWORDがあっていない場合
+            return (redirect('/login/'))
+        }
     } catch(e) {
         console.log(e);
         throw new Error(e)

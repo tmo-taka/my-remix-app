@@ -1,3 +1,8 @@
 import groq from "groq"
 
-export const AUTH_QUERY = groq`*[_type == "auth"]`
+type AUTH_PARAMS = {
+    user: FormDataEntryValue,
+    password: FormDataEntryValue
+}
+
+export const AUTH_QUERY = ({user, password}:AUTH_PARAMS) => groq`*[_type == "auth" && user == "${user}" && password == "${password}"]`
