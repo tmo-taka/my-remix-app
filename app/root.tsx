@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useRouteError
 } from "@remix-run/react";
 import 'bulma/css/bulma.min.css'
 import './assets/mixin.css'
@@ -48,4 +49,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return <Outlet />;
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.error(error);
+  return <div>{error.message}</div>;
 }

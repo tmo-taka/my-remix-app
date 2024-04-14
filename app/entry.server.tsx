@@ -8,7 +8,7 @@ import { PassThrough } from "node:stream";
 
 import type { AppLoadContext, EntryContext } from "@remix-run/node";
 import { createReadableStreamFromReadable } from "@remix-run/node";
-import { RemixServer } from "@remix-run/react";
+import { RemixServer, useRouteError } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
@@ -137,4 +137,17 @@ function handleBrowserRequest(
 
     setTimeout(abort, ABORT_DELAY);
   });
+}
+
+// export async function loader() {
+//   if (badConditionIsTrue()) {
+//     throw new Response("Oh no! Something went wrong!", {
+//       status: 500,
+//     });
+//   }
+// }
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  console.log(error)
 }

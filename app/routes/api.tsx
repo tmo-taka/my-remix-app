@@ -1,5 +1,6 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { redirect, json } from "@remix-run/node"
+import { useRouteError, isRouteErrorResponse } from "@remix-run/react";
 import type { SanityDocument } from "@sanity/client";
 import { getSession, commitSession } from "../session";
 import { loadQuery } from "~/sanity/loader.server";
@@ -36,7 +37,25 @@ export async function action({
             return (redirect('/login/'))
         }
     } catch(e) {
-        console.log(e);
-        throw new Error(e)
+        console.log('haita')
+        throw new Error(
+            {
+                status: 500,
+                message: 'this is error'
+            }
+        );
+    }
+}
+
+export function ErrorBoundary() {
+    // rootの方では検知されない？
+    const error = useRouteError();
+    console.log(error)
+    if (isRouteErrorResponse(error)) {
+        return (
+            <main>
+                <h1>エラー</h1>
+            </main>
+        );
     }
 }
