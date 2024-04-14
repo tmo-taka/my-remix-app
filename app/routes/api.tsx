@@ -37,12 +37,9 @@ export async function action({
             return (redirect('/login/'))
         }
     } catch(e) {
-        console.log('haita')
-        throw new Error(
-            {
-                status: 500,
-                message: 'this is error'
-            }
+        throw json(
+            {message: 'This is Error'},
+            {status: 500},
         );
     }
 }
@@ -50,7 +47,7 @@ export async function action({
 export function ErrorBoundary() {
     // rootの方では検知されない？
     const error = useRouteError();
-    console.log(error)
+    console.log('ErrorBoundary',isRouteErrorResponse(error))
     if (isRouteErrorResponse(error)) {
         return (
             <main>

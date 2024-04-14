@@ -6,7 +6,8 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useRouteError
+  useRouteError,
+  isRouteErrorResponse
 } from "@remix-run/react";
 import 'bulma/css/bulma.min.css'
 import './assets/mixin.css'
@@ -53,6 +54,9 @@ export default function App() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  console.error(error);
-  return <div>{error.message}</div>;
+  if (isRouteErrorResponse(error)) {
+    return(
+      <div>{error.message}</div>
+    )
+  }
 }
