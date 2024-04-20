@@ -15,7 +15,7 @@ export async function action({
     )
 
     try {
-        const body = await request.formData();
+        // const body = await request.formData();
         const user:FormDataEntryValue | null = body.get('email');
         const password:FormDataEntryValue | null = body.get('password');
         // どちらも入力されていない場合はリダイレクトのみ
@@ -47,11 +47,11 @@ export async function action({
 export function ErrorBoundary() {
     // rootの方では検知されない？
     const error = useRouteError();
-    console.log('ErrorBoundary',isRouteErrorResponse(error))
     if (isRouteErrorResponse(error)) {
         return (
             <main>
                 <h1>エラー</h1>
+                <p>{error.data.message}</p>
             </main>
         );
     }

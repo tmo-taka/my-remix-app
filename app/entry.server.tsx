@@ -7,8 +7,9 @@
 import { PassThrough } from "node:stream";
 
 import type { AppLoadContext, EntryContext } from "@remix-run/node";
-import { createReadableStreamFromReadable } from "@remix-run/node";
+import { createReadableStreamFromReadable, json } from "@remix-run/node";
 import { RemixServer, useRouteError } from "@remix-run/react";
+import { isRouteErrorResponse } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
@@ -79,7 +80,7 @@ function handleBotRequest(
           // errors encountered during initial shell rendering since they'll
           // reject and get logged in handleDocumentRequest.
           if (shellRendered) {
-            console.error(error);
+            console.error('doko',error);
           }
         },
       }
@@ -147,7 +148,12 @@ function handleBrowserRequest(
 //   }
 // }
 
-export function ErrorBoundary() {
-  const error = useRouteError();
-  console.log(error)
+export function handleError(error,{request}) {
+  // rootの方では検知されない？
+  const {status, statusText} = error;
+
+  return json({
+    status,
+    message: statusText
+  })
 }
