@@ -15,8 +15,8 @@ export async function action({
     )
 
     try {
-        // const body = await request.formData();
-        const user:FormDataEntryValue | null = body.get('email');
+        const body = await request.formData();
+        const user:FormDataEntryValue | null = body.get('user');
         const password:FormDataEntryValue | null = body.get('password');
         // どちらも入力されていない場合はリダイレクトのみ
         if(!(user && password)) {return (redirect('/login/'))}
