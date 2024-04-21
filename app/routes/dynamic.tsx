@@ -2,13 +2,15 @@ import { Outlet, useRouteError, isRouteErrorResponse } from "@remix-run/react";
 import { getSession } from "~/session";
 import { isSession, json } from "@remix-run/node";
 
-export const loader = async () => {
-    const loginSession = await getSession();
-    console.log(loginSession)
-    const loginFlag = isSession(loginSession);
+export const loader = async ({request}: LoaderFunctionArgs ) => {
+    const session = await getSession(
+        request.headers.get("Cookie")
+    );
+    const loginFlag = session.has('loginId');
     if(loginFlag){
-        return json({ ok: true });
+        return json({logined: true});
     } else {
+        // NOTE: ログイン済みではない場合は404へ飛ばす
         throw new Response("", { status: 404 });
     }
 };

@@ -27,14 +27,20 @@ export async function action({
 
         if(data.length){
             // ID,PASSWORDがあっている場合
+            session.set('loginId','ログインした際のセッションID')
             return redirect(`/login/`,{
                 headers: {
                     "Set-Cookie": await commitSession(session),
                 },
+                status: 301,
+                statusText: 'Success'
             });
         } else {
             // ID,PASSWORDがあっていない場合
-            return (redirect('/login/'))
+            return (redirect('/login/',{
+                status: 302,
+                statusText: 'Failed'
+            }))
         }
     } catch(e) {
         throw json(
