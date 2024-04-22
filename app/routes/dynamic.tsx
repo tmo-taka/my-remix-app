@@ -1,6 +1,7 @@
 import { Outlet, useRouteError, isRouteErrorResponse } from "@remix-run/react";
 import { getSession } from "~/session";
 import { isSession, json } from "@remix-run/node";
+import { Menu } from "~/components/Menu";
 
 export const loader = async ({request}: LoaderFunctionArgs ) => {
     const session = await getSession(
@@ -16,9 +17,14 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
 };
 
 export default function Index(){
+    const lists = [
+        {id: '1', title: 'これはダミー'},
+        {id: '2', title: 'これもダミー'}
+    ]
     return(
         <div>
             <header>これがヘッダーです</header>
+                <Menu lists={lists} />
                 <Outlet />
             <footer>これがフッター</footer>
         </div>
