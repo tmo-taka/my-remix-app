@@ -23,7 +23,7 @@ export default function Index(){
 
     return(
         <div>
-            <Form method="post" action="/api" className="box">
+            <form method="post" action="/api" className="p-2">
                 <InputFiled
                     type='text'
                     name='user'
@@ -33,8 +33,8 @@ export default function Index(){
                     name='password'
                 />
                 <button type="submit" className="base-btn">送信</button>
-            </Form>
-            <a onClick={() => navigate(-1)}>前へ戻る</a>
+            </form>
+            <a onClick={() => navigate(-1)} className="text-3xl">前へ戻る</a>
         </div>
     )
 }

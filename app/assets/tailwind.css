@@ -5,3 +5,7 @@
 .base-btn {
     @apply w-44 px-12 py-4 bg-primary text-white rounded-lg;
 }
+
+.base-input {
+    @apply w-full p-2 outline outline-1 outline-[#868671] focus:outline-primary;
+}
