@@ -1,6 +1,4 @@
 import type { Config } from 'tailwindcss'
-import type { PluginCreator } from 'tailwindcss/types/config';
-const plugin = require('tailwindcss/plugin')
 
 export default {
   content: ["./app/**/*.{tsx}"],
@@ -9,15 +7,10 @@ export default {
       'primary': '#ff1493'
     },
     extend: {},
+    textColor: {
+      white: "#FFF",
+      extend: {},
+    },
   },
-  plugins: [
-    plugin(function({ addComponents }):PluginCreator {
-      addComponents({
-        '.base-btn': {
-          backgroundColor: '#f00',
-        }
-      })
-    })
-  ],
 } satisfies Config
 

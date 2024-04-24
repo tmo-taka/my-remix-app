@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.base-btn {
+    @apply w-44 px-12 py-4 bg-primary text-white rounded-lg;
+}
