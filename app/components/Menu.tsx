@@ -11,11 +11,11 @@ type Props = {
 
 export const Menu =(props:Props) => {
     return (
-        <aside className="menu">
+        <aside className="menu is-small">
             <p className="menu-label">記事一覧</p>
             <ul className="menu-list">
                 {
-                    props.lists.map(list => <MenuList {...list} />)
+                    props.lists.map(list => <MenuList {...list} key={list.id}/>)
                 }
                 <li>
                     <a href=""></a>

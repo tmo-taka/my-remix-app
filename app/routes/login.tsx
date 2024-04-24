@@ -32,7 +32,7 @@ export default function Index(){
                     type='password'
                     name='password'
                 />
-                <button type="submit" className="button bulma-control-mixin">送信</button>
+                <button type="submit" className="base-btn text-3xl">送信</button>
             </Form>
             <a onClick={() => navigate(-1)}>前へ戻る</a>
         </div>

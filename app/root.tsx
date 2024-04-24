@@ -9,9 +9,12 @@ import {
   useRouteError,
   isRouteErrorResponse
 } from "@remix-run/react";
-import 'bulma/css/bulma.min.css'
-import './assets/mixin.css'
-import type { LoaderFunctionArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs, LinksFunction } from "@remix-run/node";
+import stylesheet from "~/assets/tailwind.css?url";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
 
 export const loader = ({request}: LoaderFunctionArgs) => {
   try {
