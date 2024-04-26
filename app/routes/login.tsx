@@ -23,7 +23,7 @@ export default function Index(){
 
     return(
         <div>
-            <form method="post" action="/api" className="p-2">
+            <form method="post" action="/api" className="p-4">
                 <InputFiled
                     type='text'
                     name='user'
@@ -32,7 +32,7 @@ export default function Index(){
                     type='password'
                     name='password'
                 />
-                <button type="submit" className="base-btn">送信</button>
+                <button type="submit" className="base-btn mt-8 mx-auto block">送信</button>
             </form>
             <a onClick={() => navigate(-1)} className="text-3xl">前へ戻る</a>
         </div>

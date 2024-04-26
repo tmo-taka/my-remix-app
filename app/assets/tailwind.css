@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .base-btn {
-    @apply w-44 px-12 py-4 bg-primary text-white rounded-lg;
+    @apply w-44 px-12 py-4 bg-primary text-white rounded-3xl;
 }
 
 .base-input {
-    @apply w-full p-2 outline outline-1 outline-[#868671] focus:outline-primary;
+    @apply w-full p-2 outline outline-2 outline-[#868671] focus:outline-primary rounded-md;
 }

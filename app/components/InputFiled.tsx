@@ -5,7 +5,7 @@ type Props = {
 
 export const InputFiled =(props:Props) => {
     return (
-        <div className="field">
+        <div className="mt-8 first:mt-0">
             <input type={props.type} name={props.name} className="base-input" />
         </div>
     )
