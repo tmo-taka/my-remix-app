@@ -27,10 +27,12 @@ export default function Index(){
                 <InputFiled
                     type='text'
                     name='user'
+                    label='ユーザー名'
                 />
                 <InputFiled
                     type='password'
                     name='password'
+                    label='パスワード'
                 />
                 <button type="submit" className="base-btn mt-8 mx-auto block">送信</button>
             </form>
