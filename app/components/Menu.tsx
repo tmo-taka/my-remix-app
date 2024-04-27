@@ -11,15 +11,12 @@ type Props = {
 
 export const Menu =(props:Props) => {
     return (
-        <aside className="menu is-small">
-            <p className="menu-label">記事一覧</p>
+        <aside className="mx-8 border-2 border-[#ccc] rounded-lg w-3/12">
+            <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">記事一覧</p>
             <ul className="menu-list">
                 {
                     props.lists.map(list => <MenuList {...list} key={list.id}/>)
                 }
-                <li>
-                    <a href=""></a>
-                </li>
             </ul>
         </aside>
     )
@@ -31,8 +28,8 @@ const MenuList =  (props:MenuList) => {
         navigate(`/dynamic/${id}`)
     }
     return (
-        <li>
-            <a onClick={e => toLink(props.id)}>{props.title}</a>
+        <li className="border-t-2 border-[#ccc] first:border-t-0">
+            <a className="cursor-pointer block p-2 hover:bg-base hover:text-white hover:underline hover:decoration-primary" onClick={e => toLink(props.id)}>{props.title}</a>
         </li>
     )
 }

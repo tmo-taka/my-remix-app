@@ -22,7 +22,7 @@ export default function Index(){
     const { logined } = useLoaderData();
 
     return(
-        <div>
+        <div className="py-8 min-w-screen-pc-min">
             <form method="post" action="/api" className="p-4">
                 <InputFiled
                     type='text'

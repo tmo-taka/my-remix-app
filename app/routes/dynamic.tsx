@@ -22,11 +22,9 @@ export default function Index(){
         {id: '2', title: 'これもダミー'}
     ]
     return(
-        <div>
-            <header>これがヘッダーです</header>
-                <Menu lists={lists} />
-                <Outlet />
-            <footer>これがフッター</footer>
+        <div className="py-8 flex min-w-screen-pc-min">
+            <Menu lists={lists} />
+            <Outlet />
         </div>
     )
 }
