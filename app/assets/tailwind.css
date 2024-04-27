@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .base-btn {
-    @apply w-44 px-12 py-4 bg-primary text-white rounded-3xl;
+    @apply w-44 px-12 py-4 bg-primary text-white rounded-3xl border-2 border-primary hover:bg-[white] hover:text-primary;
 }
 
 .base-input {

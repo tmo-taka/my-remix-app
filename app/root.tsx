@@ -11,6 +11,8 @@ import {
 } from "@remix-run/react";
 import type { LoaderFunctionArgs, LinksFunction } from "@remix-run/node";
 import stylesheet from "~/assets/tailwind.css?url";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -62,6 +64,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Header />
         {/* {children} */}
         <Outlet context={{txt: 'dummy'}} />
           <script
@@ -70,6 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             }}
           />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );

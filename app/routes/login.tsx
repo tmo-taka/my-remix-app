@@ -36,7 +36,7 @@ export default function Index(){
                 />
                 <button type="submit" className="base-btn mt-8 mx-auto block">送信</button>
             </form>
-            <a onClick={() => navigate(-1)} className="text-3xl">前へ戻る</a>
+            <a onClick={() => navigate(-1)} className="mx-4 text-link cursor-pointer">前へ戻る</a>
         </div>
     )
 }
