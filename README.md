@@ -1,36 +1,15 @@
-# Welcome to Remix + Vite!
+# Remix練習用のサイト
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
+##　　Node
+v20.8.0
 
-## Development
+## tool
+| tool             | name     | 
+| ---------------- | -------- | 
+| Front Frame Work | Remix    | 
+| CSS Frame Work   | tailwind | 
+| API              | Sanity   | 
 
-Run the Vite dev server:
-
-```shellscript
-npm run dev
-```
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
+## APIについて
+現状Sanityを使用し、ログインや記事データ取得で使用している。一旦はこちらをdocker起動で使用。  
+使用しているSanityリポジトリは[Svelteで使用している](https://github.com/tmo-taka/test_sanity)ものに内包されているものである。  
