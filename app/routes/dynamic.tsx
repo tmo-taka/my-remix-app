@@ -1,7 +1,10 @@
-import { Outlet, useRouteError, isRouteErrorResponse } from "@remix-run/react";
+import { Outlet, useRouteError, useLoaderData, isRouteErrorResponse } from "@remix-run/react";
 import { getSession } from "~/session";
 import { isSession, json } from "@remix-run/node";
 import { Menu } from "~/components/Menu";
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "~/sanity/loader.server";
+import { CONTENTS_QUERY } from "~/sanity/queries"
 
 export const loader = async ({request}: LoaderFunctionArgs ) => {
     const session = await getSession(
@@ -9,7 +12,8 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
     );
     const loginFlag = session.has('loginId');
     if(loginFlag){
-        return json({logined: true});
+        const {data} = await loadQuery<SanityDocument[]>(CONTENTS_QUERY);
+        return json({contents: data});
     } else {
         // NOTE: ログイン済みではない場合は404へ飛ばす
         throw new Response("", { status: 404 });
@@ -17,13 +21,11 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
 };
 
 export default function Index(){
-    const lists = [
-        {id: '1', title: 'これはダミー'},
-        {id: '2', title: 'これもダミー'}
-    ]
+    const contents = useLoaderData<typeof loader>();
+
     return(
         <div className="py-8 flex min-w-screen-pc-min">
-            <Menu lists={lists} />
+            <Menu {...contents} />
             <Outlet />
         </div>
     )

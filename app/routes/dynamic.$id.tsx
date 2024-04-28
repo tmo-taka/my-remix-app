@@ -13,7 +13,7 @@ export default function Dynamic(){
     console.log(data.todo)
     return(
         <div>
-            動的ページです。
+            <h1 className="mb-4 border-dotted border-b-2 border-primary text-4xl font-bold">動的ページ</h1>
             <div>id: {data.id}</div>
         </div>
     )
