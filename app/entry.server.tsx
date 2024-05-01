@@ -14,6 +14,8 @@ import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
 const ABORT_DELAY = 5_000;
+// Reject all pending promises from handler functions after 5 seconds
+export const streamTimeout = 5000;
 
 export default function handleRequest(
   request: Request,
@@ -136,7 +138,8 @@ function handleBrowserRequest(
       }
     );
 
-    setTimeout(abort, ABORT_DELAY);
+    // Automatically timeout the react renderer after 10 seconds
+    setTimeout(abort, 10000);
   });
 }
 
