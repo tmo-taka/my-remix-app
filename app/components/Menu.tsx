@@ -5,7 +5,7 @@ type Props = {
     contents: SanityDocument[]
 }
 
-export const Menu =(props:Props) => {
+export const Menu = (props:Props) => {
     return (
         <aside className="mx-8 border-2 border-[#ccc] rounded-lg w-3/12">
             <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">記事一覧</p>
