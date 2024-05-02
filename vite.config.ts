@@ -14,7 +14,7 @@ export default defineConfig({
     // single fetch=true
     remix({
       future: {
-        unstable_singleFetch: true,
+        unstable_singleFetch: false,
       },
     }),
     tsconfigPaths()
