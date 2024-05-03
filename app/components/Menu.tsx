@@ -1,5 +1,6 @@
 import { useNavigate } from "@remix-run/react";
 import type { SanityDocument } from "@sanity/client";
+import * as React from 'react'
 
 type Props = {
     contents: SanityDocument[]
@@ -11,7 +12,7 @@ export const Menu = (props:Props) => {
             <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">記事一覧</p>
             <ul className="menu-list">
                 {
-                    props.contents.map(content => <MenuList {...content} key={content._id}/>)
+                    props.contents.map(content => <React.Fragment key={content._id}><MenuList {...content} /></React.Fragment>)
                 }
             </ul>
         </aside>

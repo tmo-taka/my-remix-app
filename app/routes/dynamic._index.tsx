@@ -12,7 +12,6 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
 
 export default function Dynamic(){
     const {tags} = useLoaderData<typeof loader>();
-    console.log(tags);
     return(
         <div>
             <h1 className="mb-4 border-dotted border-b-2 border-primary text-4xl font-bold">動的ページのTOPです。</h1>

@@ -24,7 +24,7 @@ export default function Index(){
     const contents = useLoaderData<typeof loader>();
 
     return(
-        <div className="py-8 flex min-w-screen-pc-min">
+        <div className="py-8 flex items-start min-w-screen-pc-min">
             <Menu {...contents} />
             <Outlet />
         </div>
