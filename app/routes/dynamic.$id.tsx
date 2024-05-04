@@ -5,6 +5,7 @@ import type { SanityDocument } from "@sanity/client";
 import { loadQuery, urlFor } from "~/sanity/loader.server";
 import { ACHIEVEMENT_QUERY } from "~/sanity/queries"
 import invariant from "tiny-invariant";
+import { TagsList } from "~/components/TagsList";
 
 export const loader = async({params}: LoaderFunctionArgs) => {
     invariant(params.id, "Expected params.id");
@@ -26,6 +27,7 @@ export default function Dynamic(){
     return(
         <div>
             <h1 className="mb-4 border-dotted border-b-2 border-primary text-4xl font-bold">{pageData.title}</h1>
+            <TagsList tags={pageData.tags} />
             <div>
                 <img src={mainVisualUrl} alt="" />
             </div>

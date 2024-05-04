@@ -16,6 +16,9 @@ export const ACHIEVEMENTS_QUERY = groq`*[_type == "achievement" && published == 
 
 export const ACHIEVEMENT_QUERY= (slug:string) => groq`*[_type == "achievement" && published == true && slug.current == "${slug}"]{
     title,
+    "tags": tags[] -> {id, name},
+    create_date_from,
+    create_date_to,
     "imageUrl": main_visual.asset->url
 }`
 
