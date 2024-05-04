@@ -25,8 +25,12 @@ export default function Index(){
 
     return(
         <div className="py-8 flex items-start min-w-screen-pc-min">
-            <Menu {...contents} />
-            <Outlet />
+            <div className="w-1/4">
+                <Menu {...contents} />
+            </div>
+            <div className="w-3/4">
+                <Outlet />
+            </div>
         </div>
     )
 }

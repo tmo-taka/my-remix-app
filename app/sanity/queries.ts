@@ -19,7 +19,10 @@ export const ACHIEVEMENT_QUERY= (slug:string) => groq`*[_type == "achievement" &
     "tags": tags[] -> {id, name},
     create_date_from,
     create_date_to,
-    "imageUrl": main_visual.asset->url
+    "imageUrl": main_visual.asset->url,
+    member,
+    site_url,
+    contents
 }`
 
 export const TAGS_QUERY = groq`*[_type == "tag"]`

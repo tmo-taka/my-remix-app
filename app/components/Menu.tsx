@@ -8,7 +8,7 @@ type Props = {
 
 export const Menu = (props:Props) => {
     return (
-        <aside className="mx-8 border-2 border-[#ccc] rounded-lg w-3/12 overflow-hidden">
+        <aside className="mx-8 border-2 border-[#ccc] rounded-lg w-auto overflow-hidden">
             <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">記事一覧</p>
             <ul className="menu-list">
                 {
