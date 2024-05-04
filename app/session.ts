@@ -13,7 +13,7 @@ const { getSession, commitSession, destroySession } =
             //
             // expires: new Date(Date.now() + 60_000),
             httpOnly: true,
-            maxAge: 600,
+            maxAge: 7200, //2時間
             path: "/",
             sameSite: "lax",
             secure: true,
