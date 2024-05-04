@@ -4,7 +4,7 @@ import { isSession, json } from "@remix-run/node";
 import { Menu } from "~/components/Menu";
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "~/sanity/loader.server";
-import { CONTENTS_QUERY } from "~/sanity/queries"
+import { ACHIEVEMENTS_QUERY } from "~/sanity/queries"
 
 export const loader = async ({request}: LoaderFunctionArgs ) => {
     const session = await getSession(
@@ -12,7 +12,7 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
     );
     const loginFlag = session.has('loginId');
     if(loginFlag){
-        const {data} = await loadQuery<SanityDocument[]>(CONTENTS_QUERY);
+        const {data} = await loadQuery<SanityDocument[]>(ACHIEVEMENTS_QUERY);
         return json({contents: data});
     } else {
         // NOTE: ログイン済みではない場合は404へ飛ばす

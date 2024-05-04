@@ -7,16 +7,16 @@ type AUTH_PARAMS = {
 
 export const AUTH_QUERY = ({user, password}:AUTH_PARAMS) => groq`*[_type == "auth" && user == "${user}" && password == "${password}"]`
 
-export const CONTENTS_QUERY = groq`*[_type == "content" && published == true] | order(_updatedAt desc)[0...9] {
+export const ACHIEVEMENTS_QUERY = groq`*[_type == "achievement" && published == true] | order(_updatedAt desc)[0...9] {
     _id,
     title,
     slug,
     _updatedAt
 }`
 
-export const CONTENT_QUERY= (slug:string) => groq`*[_type == "content" && published == true && slug.current == "${slug}"]{
+export const ACHIEVEMENT_QUERY= (slug:string) => groq`*[_type == "achievement" && published == true && slug.current == "${slug}"]{
     title,
-    "imageUrl": mainVisual.asset->url
+    "imageUrl": main_visual.asset->url
 }`
 
 export const TAGS_QUERY = groq`*[_type == "tag"]`

@@ -3,13 +3,13 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery, urlFor } from "~/sanity/loader.server";
-import { CONTENT_QUERY } from "~/sanity/queries"
+import { ACHIEVEMENT_QUERY } from "~/sanity/queries"
 import invariant from "tiny-invariant";
 
 export const loader = async({params}: LoaderFunctionArgs) => {
     invariant(params.id, "Expected params.id");
     const {id} = params
-    const  {data} = await loadQuery<SanityDocument[]>(CONTENT_QUERY(id));
+    const  {data} = await loadQuery<SanityDocument[]>(ACHIEVEMENT_QUERY(id));
     const pageData = data[0];
 
     if(pageData) {
