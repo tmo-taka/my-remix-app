@@ -16,8 +16,8 @@ export default {
       'link': colors.link,
     },
     extend: {
-      screens: {
-        'pc-min': '1280px',
+      spacing: {
+        'pcMin': '1280px',
       },
       animation: {
         slideIn: "slideIn .4s ease-in forwards",
