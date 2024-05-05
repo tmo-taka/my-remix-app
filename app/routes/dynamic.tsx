@@ -28,7 +28,7 @@ export default function Index(){
             <div className="w-1/4 sticky top-0">
                 <Menu {...contents} />
             </div>
-            <div className="py-8 w-3/4">
+            <div className="pt-8 w-3/4">
                 <Outlet />
             </div>
         </div>
