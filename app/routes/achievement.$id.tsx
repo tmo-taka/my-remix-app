@@ -64,8 +64,12 @@ export default function Dynamic(){
                         <dt className="text-primary">フロントエンド</dt><dd className="text-primary">{pageData.member.front}</dd>
                         <dt>バックエンド</dt><dd>{pageData.member.back}</dd>
                     </dl>
-                    <div className="w-3/4 bg-[white] border-base border-4 p-4 absolute -bottom-10 left-0">
-                        サイトURL：<a href={pageData.site_url} target="_blank" className="underline">{pageData.site_url}</a>
+                    <div className="overflow-hidden absolute -bottom-10 left-0 w-3/4">
+                        <div className="box-border bg-[white] border-base border-4 group/url before:content-[''] before:block before:absolute before:-top-1 before:right-0 before:w-1 before:h-full before:bg-primary before:-translate-y-full after:content-[''] after:block after:absolute after:-bottom-1 after:left-0 after:w-1 after:h-full after:bg-primary after:translate-y-full hover:before:translate-y-0">
+                            <div className="relative p-4 before:content-[''] before:block before:absolute before:-top-1 before:left-0 before:h-1 before:w-full before:bg-primary before:-translate-x-full after:content-[''] after:block after:absolute after:-bottom-1 after:right-0 after:h-1 after:w-full after:bg-primary after:translate-x-full group-hover/url:before:translate-x-0 group-hover/url:after:translate-x-0">
+                                サイトURL：<a href={pageData.site_url} target="_blank" className="underline">{pageData.site_url}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p className="tracking-wider">

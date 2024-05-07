@@ -22,7 +22,7 @@ export const Menu = (props:Props) => {
 const MenuList =  (props:SanityDocument) => {
     const navigate = useNavigate();
     const toLink = (slugCurrent:string) => {
-        navigate(`/dynamic/${slugCurrent}`)
+        navigate(`/achievement/${slugCurrent}`)
     }
     // 日付だけを抜き取る
     const takeOutDate = props._updatedAt.split('T')[0]

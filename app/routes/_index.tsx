@@ -10,25 +10,14 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            href="/login"
-            rel="noreferrer"
-          >
-            ログインページ
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-        これ
-        <SampleText />
+    <div className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary w-full min-h-screen center">
+      <h1 className="text-8xl text-white">Welcome to Remix</h1>
+      <a
+        href="/login"
+        rel="noreferrer"
+      >
+        ログインページ
+      </a>
     </div>
   );
 }

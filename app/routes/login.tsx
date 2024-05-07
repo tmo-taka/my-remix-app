@@ -11,7 +11,7 @@ export const loader = async ({request}: LoaderFunctionArgs ) => {
     const loginFlag = session.has('loginId');
     if(loginFlag){
         // NOTE: ログイン済みの場合はリダイレクトさせる
-        return redirect('/dynamic/');
+        return redirect('/achievement/');
     } else {
         return json({logined: false})
     }

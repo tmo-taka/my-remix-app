@@ -1,4 +1,5 @@
 import { json } from "@remix-run/node";
+import * as React from 'react'
 import {
   Links,
   Meta,
@@ -7,6 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useRouteError,
+  useResolvedPath,
   isRouteErrorResponse
 } from "@remix-run/react";
 import type { LoaderFunctionArgs, LinksFunction } from "@remix-run/node";
@@ -39,6 +41,12 @@ export const loader = ({request}: LoaderFunctionArgs) => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const error = useRouteError();
+  const [judgeTopPath, setJudgeTopPath] = React.useState(false)
+    const path = useResolvedPath();
+    React.useEffect(() => {
+        setJudgeTopPath(path.pathname === '/');
+    }, [path.pathname]);
+
   if(error) {
     // throw json({
     //   status: error.status
@@ -63,16 +71,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body id="pageTop">
-        <Header />
+      <body id="pageTop" className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary min-h-dvh">
+        <Header judgeTopPath={judgeTopPath} />
         {/* {children} */}
-        <Outlet context={{txt: 'dummy'}} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.ENV = ${JSON.stringify(ENV)}`,
-            }}
-          />
-        <Scripts />
+        <div className={judgeTopPath ? "bg-[transparent]" : "bg-[white]"} >
+          <Outlet context={{txt: 'dummy'}} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.ENV = ${JSON.stringify(ENV)}`,
+              }}
+            />
+            <Scripts />
+        </div>
         <Footer />
       </body>
     </html>
