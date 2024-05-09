@@ -10,14 +10,17 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary w-full min-h-screen center">
-      <h1 className="text-8xl text-white">Welcome to Remix</h1>
-      <a
-        href="/login"
-        rel="noreferrer"
-      >
-        ログインページ
-      </a>
+    <div className="w-full min-h-screen center px-8 py-32">
+      <h1 className="mb-36 text-8xl text-white">Welcome to Remix</h1>
+      <div className="flex justify-center">
+        <a
+          href="/login"
+          rel="noreferrer"
+          className="text-3xl text-white"
+        >
+          ログインページ
+        </a>
+      </div>
     </div>
   );
 }
