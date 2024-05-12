@@ -10,12 +10,24 @@ import { hydrateRoot } from "react-dom/client";
 
 const cursorPointer = document.getElementById('cursorPointer');
 
-const moveCursor = (evnet: EventMouseMove) => {
+const moveCursor = (event: EventMouseMove) => {
   const cursorX = event.pageX;
   const cursorY = event.pageY;
   const cursorWidth = 60
 
   cursorPointer.style.transform = `translate3d(${cursorX - (cursorWidth/2)}px, ${cursorY - (cursorWidth/2)}px, 0px)`;
+
+  // cursor pointer effect
+  const targetElement = event.target.tagName;
+  const pointerEffectElements = ['A', 'INPUT', 'BUTTON']
+  const judgeHasPointerClass = cursorPointer.classList.contains('pointer');
+  const isHoverPointerElement = pointerEffectElements.includes(targetElement);
+
+  if(isHoverPointerElement) {
+    if(!judgeHasPointerClass) { cursorPointer.classList.add('pointer'); }
+  } else {
+    if(judgeHasPointerClass) { cursorPointer.classList.remove('pointer'); }
+  }
 }
 
 window.addEventListener('mousemove', moveCursor);
