@@ -16,7 +16,7 @@ export default function Index() {
         <a
           href="/login"
           rel="noreferrer"
-          className="text-3xl text-white"
+          className="text-3xl text-white hoverCursorPoint"
         >
           ログインページ
         </a>

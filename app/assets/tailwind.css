@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html {
+        font-family: "Montserrat", "Noto Sans JP", system-ui, sans-serif;
+        cursor: none !important;
+    }
+    #cursorPointer {
+        --accent-color: #FF0;
+    }
+    #cursorPointer {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: solid 1px var(--accent-color);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        z-index: 8;
+    }
+
+    #cursorPointer::after {
+        content: "";
+        display: block;
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+    }
+}
+
 .base-btn {
     @apply w-44 px-12 py-4 bg-primary text-white rounded-3xl border-2 border-primary hover:bg-[white] hover:text-primary;
 }

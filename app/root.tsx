@@ -18,6 +18,9 @@ import { Footer } from "./components/Footer";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous"},
+  { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Noto+Sans+JP:wght@300&display=swap"},
 ];
 
 export const loader = ({request}: LoaderFunctionArgs) => {
@@ -72,6 +75,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body id="pageTop" className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary min-h-dvh">
+        <div id="cursorPointer"></div>
         <Header judgeTopPath={judgeTopPath} />
         {/* {children} */}
         <div className={judgeTopPath ? "bg-[transparent]" : "bg-[white]"} >
