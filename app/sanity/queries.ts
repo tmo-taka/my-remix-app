@@ -14,7 +14,7 @@ export const ACHIEVEMENTS_QUERY = groq`*[_type == "achievement" && published == 
     _updatedAt
 }`
 
-export const ACHIEVEMENT_QUERY= (slug:string) => groq`*[_type == "achievement" && published == true && slug.current == "${slug}"]{
+export const ACHIEVEMENT_QUERY = (slug:string) => groq`*[_type == "achievement" && published == true && slug.current == "${slug}"]{
     title,
     "tags": tags[] -> {id, name},
     create_date_from,
@@ -24,5 +24,7 @@ export const ACHIEVEMENT_QUERY= (slug:string) => groq`*[_type == "achievement" &
     site_url,
     contents
 }`
+
+export const TAG_QUERY = (id:string) => groq`*[_type == "tag" && id.current == "${id}"]`
 
 export const TAGS_QUERY = groq`*[_type == "tag"]`

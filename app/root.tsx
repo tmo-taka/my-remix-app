@@ -45,10 +45,17 @@ export const loader = ({request}: LoaderFunctionArgs) => {
 export function Layout({ children }: { children: React.ReactNode }) {
   const error = useRouteError();
   const [judgeTopPath, setJudgeTopPath] = React.useState(false)
-    const path = useResolvedPath();
-    React.useEffect(() => {
-        setJudgeTopPath(path.pathname === '/');
-    }, [path.pathname]);
+  const path = useResolvedPath();
+  React.useEffect(() => {
+      setJudgeTopPath(path.pathname === '/');
+  }, [path.pathname]);
+
+  const judgeBaseClass = () => {
+    const baseClass = "min-h-dvh"
+    const activeClass = judgeTopPath ? "bg-[transparent]" : "bg-[white]"
+    const setClass = `${baseClass} ${activeClass}`
+    return setClass;
+  }
 
   if(error) {
     // throw json({
@@ -78,7 +85,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div id="cursorPointer"></div>
         <Header judgeTopPath={judgeTopPath} />
         {/* {children} */}
-        <div className={judgeTopPath ? "bg-[transparent]" : "bg-[white]"} >
+        <div className={judgeBaseClass()} >
           <Outlet context={{txt: 'dummy'}} />
             <script
               dangerouslySetInnerHTML={{
