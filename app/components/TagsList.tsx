@@ -9,7 +9,7 @@ export const TagsList = (props:Props) => {
     console.log(props.tags[0].id.current);
     const navigate = useNavigate();
     const toLink = (idCurrent:string) => {
-        // NOTE: なぜかzeroWidthが入り込むので原因確認
+        // TODO: なぜかzeroWidthが入り込むので原因確認
         let zeroWidthSpace = /[\u200B-\u200D\uFEFF]/g;
         const removeZeroWidth = idCurrent.replace(zeroWidthSpace,'');
         navigate(`/tag/${removeZeroWidth}`)
