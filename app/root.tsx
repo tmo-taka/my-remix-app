@@ -51,7 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [path.pathname]);
 
   const judgeBaseClass = () => {
-    const baseClass = "min-h-dvh"
+    const baseClass = "min-h-dvh min-w-pcMin"
     const activeClass = judgeTopPath ? "bg-[transparent]" : "bg-[white]"
     const setClass = `${baseClass} ${activeClass}`
     return setClass;
@@ -81,7 +81,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body id="pageTop" className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary min-h-dvh">
+      <body id="pageTop" className="bg-gradient-to-br from-[#3F51B5] via-[#9C27B0] to-primary bg-[length:1792px] min-w-pcMin min-h-dvh">
         <div id="cursorPointer"></div>
         <Header judgeTopPath={judgeTopPath} />
         {/* {children} */}
