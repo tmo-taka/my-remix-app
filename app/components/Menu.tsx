@@ -1,5 +1,6 @@
 import { useNavigate } from "@remix-run/react";
 import type { SanityDocument } from "@sanity/client";
+import { displayDate } from "~/utils/display-date"
 import * as React from 'react'
 
 type Props = {
@@ -26,7 +27,7 @@ const MenuList =  (props:SanityDocument) => {
     }
     // 日付だけを抜き取る
     const takeOutDate = props._updatedAt.split('T')[0]
-    const displayDateData = takeOutDate.replaceAll('-','/');
+    const displayDateData = displayDate(takeOutDate,'day');
     return (
         <li className="border-t-2 border-[#ccc] first:border-t-0">
             <a className="group/link cursor-pointer block p-2 border-l-4 border-l-primary relative after:content-[''] after:absolute after:h-full after:-left-4 after:top-0 after:w-4 after:translate-y-0 hover:after:translate-y-full after:bg-[white] after:transition-transform" onClick={e => toLink(props.slug.current)}>
