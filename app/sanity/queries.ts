@@ -28,3 +28,10 @@ export const ACHIEVEMENT_QUERY = (slug:string) => groq`*[_type == "achievement" 
 export const TAG_QUERY = (id:string) => groq`*[_type == "tag" && id.current == "${id}"]`
 
 export const TAGS_QUERY = groq`*[_type == "tag"]`
+
+export const ACHIEVEMENTS_QUERY_FROM_TAG = (tag:string) => groq`*[_type == "achievement" && published == true && "${tag}" in tags[] -> id.current]{
+    _id,
+    title,
+    slug,
+    _updatedAt
+}`
