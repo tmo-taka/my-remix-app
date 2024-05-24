@@ -6,7 +6,8 @@ import { loadQuery, urlFor } from "~/sanity/loader.server";
 import { ACHIEVEMENT_QUERY } from "~/sanity/queries"
 import invariant from "tiny-invariant";
 import { TagsList } from "~/components/TagsList";
-import { displayDate } from "~/utils/display-date"
+import { displayDate } from "~/utils/display-date";
+import { convertSanityImageUrl } from "~/utils/sanity-image";
 
 export const loader = async({params}: LoaderFunctionArgs) => {
     invariant(params.id, "Expected params.id");
@@ -15,7 +16,7 @@ export const loader = async({params}: LoaderFunctionArgs) => {
     const pageData = data[0];
 
     if(pageData) {
-        const mainVisualUrl = urlFor(pageData.imageUrl).width(640).url();
+        const mainVisualUrl = convertSanityImageUrl(pageData.imageUrl);
         return json({pageData,mainVisualUrl})
     } else {
         throw new Response("", { status: 404 });

@@ -33,5 +33,6 @@ export const ACHIEVEMENTS_QUERY_FROM_TAG = (tag:string) => groq`*[_type == "achi
     _id,
     title,
     slug,
+    "imageUrl": main_visual.asset->url,
     _updatedAt
 }`
