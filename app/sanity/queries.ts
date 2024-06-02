@@ -11,7 +11,9 @@ export const ACHIEVEMENTS_QUERY = groq`*[_type == "achievement" && published == 
     _id,
     title,
     slug,
-    _updatedAt
+    "imageUrl": main_visual.asset->url,
+    _updatedAt,
+    "contentsText": contents[0].children[0].text
 }`
 
 export const ACHIEVEMENT_QUERY = (slug:string) => groq`*[_type == "achievement" && published == true && slug.current == "${slug}"]{
@@ -34,5 +36,6 @@ export const ACHIEVEMENTS_QUERY_FROM_TAG = (tag:string) => groq`*[_type == "achi
     title,
     slug,
     "imageUrl": main_visual.asset->url,
-    _updatedAt
+    _updatedAt,
+    "contentsText": contents[0].children[0].text
 }`

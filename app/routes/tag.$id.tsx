@@ -17,7 +17,7 @@ export const loader = async({params}: LoaderFunctionArgs) => {
     if (tags.length === 0) { throw new Response("", { status: 404 }); }
     const {data: articles} = await loadQuery<SanityDocument[]>(ACHIEVEMENTS_QUERY_FROM_TAG((id)));
     if(articles.length > 0) {
-        articles.map(article => article.imageUrl = convertSanityImageUrl(article.imageUrl,240))
+        articles.map(article => article.imageUrl = convertSanityImageUrl(article.imageUrl,300))
     }
     const pageData = {articles, tag: tags[0]};
 
@@ -26,6 +26,7 @@ export const loader = async({params}: LoaderFunctionArgs) => {
 
 export default function Dynamic(){
     const {pageData} = useLoaderData<typeof loader>();
+    console.log(pageData)
     const navigate = useNavigate();
     const toLink = (slugCurrent:string) => {
         navigate(`/achievement/${slugCurrent}`)
@@ -46,10 +47,14 @@ export default function Dynamic(){
                         return (
                             <React.Fragment key={content._id}>
                                 <li>
-                                    <a onClick={e => toLink(content.slug.current)} className="flex w-2/3 px-8 py-4 justify-between border-2 border-[#CCC]">
-                                        <img className="mr-4" src={content.imageUrl} alt="" />
+                                    <a onClick={e => toLink(content.slug.current)} className="group block w-1/3 px-2 py-3 border-2 border-base">
+                                        <div className="mb-4 flex flex-wrap justify-center relative">
+                                            <img className="" src={content.imageUrl} alt="" />
+                                            <div className="bg-base opacity-40 absolute w-full h-full group-hover:opacity-0"></div>
+                                        </div>
                                         <div className="flex flex-wrap align-middle">
-                                            <div className="text-2xl w-full">{content.title}</div>
+                                            <div className="text-xl w-full mb-4">{content.title}</div>
+                                            <p className="text-ellipsis line-clamp-3 text-xs mb-2">{content.contentsText}</p>
                                             <div className="block w-full text-right" ><time dateTime={content._updatedAt} className="text-right text-xs text-[#ccc]">更新日:{displayDateData(content._updatedAt)}</time></div>
                                         </div>
                                     </a>

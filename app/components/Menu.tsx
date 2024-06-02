@@ -10,7 +10,7 @@ type Props = {
 export const Menu = (props:Props) => {
     return (
         <aside className="mr-8 border-r-2 border-r-[#ccc] w-auto overflow-hidden">
-            <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">記事一覧</p>
+            <p className="py-4 border-b-2 border-b-[#ccc] text-center text-lg">制作実績一覧</p>
             <ul className="menu-list">
                 {
                     props.contents.map(content => <React.Fragment key={content._id}><MenuList {...content} /></React.Fragment>)
